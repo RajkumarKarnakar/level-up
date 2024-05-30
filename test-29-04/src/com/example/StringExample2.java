@@ -33,8 +33,16 @@ public class StringExample2 {
 //        );
 
         System.out.println("------words with no vowels------");
-        Arrays.stream(words).filter(s -> countVowels(s)==0)
+        Arrays.stream(words).filter(s -> countVowels(s) == 0)
                 .forEach(System.out::println);
+
+        //OR
+
+        System.out.println("total vowels in text are: "
+                + text.chars().filter(c ->
+                        "aeiouy".indexOf(c) != -1)
+                .sum()
+        );
     }
 
     static boolean isPalindrome(String original) {
@@ -46,12 +54,13 @@ public class StringExample2 {
 
         return true;
     }
+
     static int countVowels(String s) {
         // Your code goes here.
         int count = 0;
         String vowels = "aeiouy";
-        for(char c : s.toCharArray()){
-            if(vowels.indexOf(c)!= -1)
+        for (char c : s.toCharArray()) {
+            if (vowels.indexOf(c) != -1)
                 count++;
         }
         return count;
