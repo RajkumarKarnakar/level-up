@@ -7,7 +7,9 @@ import java.util.Stack;
 
 public class MatchingParentheses {
     public static void main(String[] args) {
-        System.out.println("Is Complete String: " + hasMatchingParenthesis("((<>))"));
+        String equation = "()incre<>ment<>[]";
+        boolean status = hasMatchingParenthesis(equation);
+        System.out.println("Is Complete String: " + equation + "is " + status);
     }
 
     static boolean hasMatchingParenthesis(String string) {
@@ -24,12 +26,11 @@ public class MatchingParentheses {
                 stack.push(current);
                 continue;
             }
-            if (blockSymbols.containsKey(current) &&
+            if (blockSymbols.containsKey(current) && (
                     stack.isEmpty() ||
-                    stack.pop() != blockSymbols.get(current)
-            ) {
+                            stack.pop() != blockSymbols.get(current))
+            )
                 return false;
-            }
 
         }
         return stack.isEmpty();
